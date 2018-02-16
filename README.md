@@ -1,6 +1,6 @@
 # weather-app
 
-> A Vue.js project that show weather in searched cities
+> A Vue.js project that is showing weather in searched cities
 
 ## Build Setup
 
