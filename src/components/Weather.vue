@@ -8,14 +8,14 @@
         <button @click="searchCity" :disabled="city.length > 0 ? false : true ">Search</button>
       </form>
       <div>
-         <div v-if="!isHidden" v-for="(isSaved, key) in saved" :key="key" class="weather-conditions">
-            <button @click="saved.splice(key, 1)">X</button>
-            <router-link :to="{ name: 'single', params: { id: isSaved.name } }" :key="isSaved.id">
-            <p>{{isSaved.name}}</p>
+          <div v-for="(save, key) in saved" :key="key"  class="weather-conditions">
+            <router-link :to="{ name: 'single', params: { id: save.name } }" :key="save.id">
+              <p>{{save.name}}</p>
             </router-link>
-            <span>Current Temp: {{isSaved.main.temp - 273.15 + '°'}}</span>
-            <p>Description: {{isSaved.weather[0].description}}</p>
+            <span>Current Temp: {{save.main.temp - 273.15 + '°'}}</span>
+            <p>Description: {{save.weather.description}}</p>
           </div>
+           <button @click="clearLocalStorage">Clear saved data</button>
       </div>
     </div>
   </div>
@@ -35,6 +35,19 @@ export default {
       saved: []
     }
   },
+  mounted(){
+    console.log('App mounted!');
+    if (localStorage.getItem('saved')) this.saved = JSON.parse(localStorage.getItem('saved'));
+  },
+  watch: {
+    saved: {
+      handler(){
+        console.log('Saved changed');
+        localStorage.setItem('saved', JSON.stringify(this.saved));
+      },
+      deep: true,
+    }
+  },
   methods: {
     searchCity(){
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${apiKey}`)
@@ -43,12 +56,15 @@ export default {
           this.weather = data;
           this.isHidden = false;
           this.saved.push(this.weather);
-          this.city = '';
           this.weather = []
+          this.city = '';
       })
     },
     remove(){
       this.saved.splice(isSaved, 1)
+    },
+    clearLocalStorage(){
+      this.saved = []
     }
   }
 }
