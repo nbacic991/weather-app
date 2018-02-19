@@ -1,11 +1,15 @@
 <template>
-    <div>
+    <div v-if="weather">
         <h1>{{id}}, {{weather.sys.country}}</h1>
-        <span>Max Tem: {{weather.main.temp_max - 273.15 + '°'}}</span>
-        <span>Max Tem: {{weather.main.temp_min - 273.15 + '°'}}</span>
+        <span>Max Tem: {{weather.main.temp_max - 273.15 + '°C'}}</span>
+        <span>Max Tem: {{weather.main.temp_min - 273.15 + '°C'}}</span>
         <p>Pressure: {{weather.main.pressure + ' mb/s'}}</p>
+        <p>Lat: {{weather.coord.lat}}</p>
+        <p>Long: {{weather.coord.lon}}</p>
         <Forecast :id=city></Forecast>
-        <!-- <router-link to='/'>Go back</router-link> -->
+        <router-link to='/'>
+          <button>Go back</button>
+        </router-link>
     </div>
 </template>
 
@@ -28,7 +32,6 @@ export default {
         .then((data) => {
           this.weather = data;
     });
-    
   },
   beforeMount(){
       this.weather = this.weather;

@@ -1,9 +1,48 @@
 <template>
   <div>
       <h3>Check for weather conditions for the next five days</h3>
-      <p>{{(forecast.list[0].main.temp - 273.15).toFixed(2) }}</p>
-      <img v-bind:src="'http://openweathermap.org/img/w/' + forecast.list[0].weather[0].icon + '.png'" alt=""><br>
-      <p></p>
+      <section class="days">
+          <div class="day">
+              {{forecast.list[0].dt | formatUnix}}
+              <p>{{(forecast.list[0].main.temp_max - 273.15).toFixed(0) + '°C'}}
+                  / {{(forecast.list[0].main.temp_min - 273.15).toFixed(0) + '°C'}}
+              </p>
+              <p>Wind speed: {{forecast.list[0].wind.speed + 'm/s'}}</p>
+              <p>Humidity: {{forecast.list[0].main.humidity + '%'}}</p>
+          </div>
+          <div class="day">
+              {{forecast.list[3].dt | formatUnix}}
+             <p>{{(forecast.list[3].main.temp_max - 273.15).toFixed(0) + '°C'}}
+                  / {{(forecast.list[3].main.temp_min - 273.15).toFixed(0) + '°C'}}
+              </p>
+             <p>Wind speed: {{forecast.list[3].wind.speed + 'm/s'}}</p>
+             <p>Humidity: {{forecast.list[3].main.humidity + '%'}}</p>
+          </div>
+          <div class="day">
+              {{forecast.list[11].dt | formatUnix}}
+              <p>{{(forecast.list[11].main.temp_max - 273.15).toFixed(0) + '°C'}}
+                  / {{(forecast.list[11].main.temp_min - 273.15).toFixed(0) + '°C'}}
+              </p>
+              <p>Wind speed: {{forecast.list[11].wind.speed + 'm/s'}}</p>
+              <p>Humidity: {{forecast.list[11].main.humidity + '%'}}</p>
+          </div>
+          <div class="day">
+              {{forecast.list[19].dt | formatUnix}}
+              <p>{{(forecast.list[19].main.temp_max - 273.15).toFixed(0) + '°C'}}
+                  / {{(forecast.list[19].main.temp_min - 273.15).toFixed(0) + '°C'}}
+              </p>
+              <p>Wind speed: {{forecast.list[19].wind.speed + 'm/s'}}</p>
+              <p>Humidity: {{forecast.list[19].main.humidity + '%'}}</p>
+          </div>
+          <div class="day">
+              {{forecast.list[28].dt | formatUnix}}
+              <p>{{(forecast.list[28].main.temp_max - 273.15).toFixed(0) + '°C'}}
+                  / {{(forecast.list[28].main.temp_min - 273.15).toFixed(0) + '°C'}}
+              </p>
+              <p>Wind speed: {{forecast.list[28].wind.speed + 'm/s'}}</p>
+              <p>Humidity: {{forecast.list[28].main.humidity + '%'}}</p>
+          </div>
+      </section>
   </div>
 </template>
 
@@ -27,16 +66,29 @@ export default {
         .then(response => response.json())
         .then((data) => {
           this.forecast = data;
-    });
-    
-  },
-  components: {
-      SingleWeather
-  }
+        });
+    },
+    filters: {
+        formatUnix(value){
+            if (value) {
+                return moment.unix(value).format('dddd');
+            }
+        }
+    },
+    components: {
+        SingleWeather
+    }
 
 }
 </script>
 
-<style scoped>
-
+<style scope>
+.days {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.day {
+    flex-basis: 20%;
+}
 </style>
