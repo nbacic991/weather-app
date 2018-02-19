@@ -13,7 +13,7 @@
             <router-link :to="{ name: 'single', params: { id: isSaved.name } }" :key="isSaved.id">
             <p>{{isSaved.name}}</p>
             </router-link>
-            <span>Current Temp: {{ isSaved.main.temp - 273.15 + '°'}}</span>
+            <span>Current Temp: {{isSaved.main.temp - 273.15 + '°'}}</span>
             <p>Description: {{isSaved.weather[0].description}}</p>
           </div>
       </div>
@@ -48,8 +48,6 @@ export default {
       })
     },
     remove(){
-      // this.$delete(this.isSaved)
-      // this.weather = []
       this.saved.splice(isSaved, 1)
     }
   }

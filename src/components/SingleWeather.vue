@@ -1,17 +1,17 @@
 <template>
     <div>
-        <h1>{{id}}</h1>
-        <p>
-            <span>Max Tem: {{weather.main.temp_max - 273.15 + '°'}}</span>
-            <span>Max Tem: {{weather.main.temp_min - 273.15 + '°'}}</span>
-        </p>
+        <h1>{{id}}, {{weather.sys.country}}</h1>
+        <span>Max Tem: {{weather.main.temp_max - 273.15 + '°'}}</span>
+        <span>Max Tem: {{weather.main.temp_min - 273.15 + '°'}}</span>
         <p>Pressure: {{weather.main.pressure + ' mb/s'}}</p>
-        <router-link to='/'>Go back</router-link>
+        <Forecast :id=city></Forecast>
+        <!-- <router-link to='/'>Go back</router-link> -->
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Forecast from './Forecast'
 
 const apiKey = '9750ed0121530eff6f42450c769c6222';
 export default {
@@ -27,11 +27,15 @@ export default {
         .then(response => response.json())
         .then((data) => {
           this.weather = data;
-    })
+    });
+    
   },
   beforeMount(){
       this.weather = this.weather;
-  }
+  },
+  components: {
+    Forecast
+  },
 }
 </script>
 
