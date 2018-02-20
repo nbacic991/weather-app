@@ -1,20 +1,22 @@
 <template>
-  <main class="hello">
-    <h1>Weather APP based on VueJS and weather API</h1>
-    <p>Enter city</p>
+  <main>
+    <h1>Weather APP</h1>
+    <Navigation />
+    <h3>Enter city</h3>
     <div class="weather">
       <form action="">
         <input type="text" v-model="city" placeholder="Search for Your city...">
         <button @click="searchCity" :disabled="city.length > 0 ? false : true">Search</button>
       </form>
       <div class="places">
-        <div v-for="(save, key) in saved" :key="key"  class="single-place">
-          <router-link :to="{ name: 'single', params: { id: save.name } }" :key="save.id">
-            <span>{{save.name}}</span>
-          </router-link>
+        <div v-for="(save, key) in saved" :key="key"  v-bind:class="save.name.toLowerCase() + ' single-place'">
           <img v-bind:src="'http://openweathermap.org/img/w/' + save.weather[0].icon + '.png'" alt=""><br>
-          <span>Current Temp: {{(save.main.temp - 273.15).toFixed(0) + '°C'}}</span>
+          <router-link :to="{ name: 'single', params: { id: save.name } }" :key="save.id">
+            <p>{{save.name}}</p>
+          </router-link>
+          <span class="temp">{{(save.main.temp - 273.15).toFixed(0) + '°C'}}</span>
           <p>Description: {{save.weather[0].description}}</p>
+          <!-- <button @click="remove(save)">x</button> -->
         </div>
       </div>
       <button @click="clearLocalStorage">Clear saved data</button>
@@ -25,6 +27,7 @@
 <script>
 import axios from 'axios'
 import Vuex from 'vuex'
+import Navigation from './Navigation'
 
 const apiKey = '9750ed0121530eff6f42450c769c6222';
 export default {
@@ -61,30 +64,65 @@ export default {
           this.city = '';
       })
     },
-    remove(){
-      this.saved.splice(isSaved, 1)
+    remove(save){
+      this.saved.splice(save, key)
     },
     clearLocalStorage(){
       this.saved = []
     }
+  },
+  components: {
+    Navigation
   }
 }
 </script>
 
-<style scoped>
 
+<style lang="scss" scoped>
+main {
+  margin: 0 0 10px 0;
+  h1 {
+    margin-top: 0;
+    color: #ffffff;
+  }
+  h3 {
+    color: #ffffff;
+  }
+}
+a {
+  text-decoration: none;
+  font-size: 24px;
+  font-style: italic;
+}
+.temp {
+  font-size: 30px;
+}
+img {
+  width: 100px;
+}
 .places {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: relative;
 }
 .single-place {
   border: 1px solid gray;
+  border-radius: 10px;
   flex-basis: 24%;
   margin: 10px auto;
   box-shadow: 2px 2px 2px gray;
+  padding: 15px;
+  position: relative;
+  background: #90d7c9;
 }
 .single-place button {
   float: right;
+}
+@media screen and (max-width: 500px) {
+  .places {
+    display: block;
+    padding: 10px;
+  }
 }
 </style>

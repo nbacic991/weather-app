@@ -1,24 +1,22 @@
 <template>
-  <div>
-      <h3>Check for weather conditions for the next five days</h3>
-      <section class="days">
-          <div class="day">
-              {{forecast.list[0].dt | formatUnix}}
-              <p>{{(forecast.list[0].main.temp_max - 273.15).toFixed(0) + '°C'}}
-                  / {{(forecast.list[0].main.temp_min - 273.15).toFixed(0) + '°C'}}
-              </p>
-              <p>Wind speed: {{forecast.list[0].wind.speed + 'm/s'}}</p>
-              <p>Humidity: {{forecast.list[0].main.humidity + '%'}}</p>
-          </div>
-          <div class="day">
-              {{forecast.list[3].dt | formatUnix}}
-             <p>{{(forecast.list[3].main.temp_max - 273.15).toFixed(0) + '°C'}}
-                  / {{(forecast.list[3].main.temp_min - 273.15).toFixed(0) + '°C'}}
-              </p>
-             <p>Wind speed: {{forecast.list[3].wind.speed + 'm/s'}}</p>
-             <p>Humidity: {{forecast.list[3].main.humidity + '%'}}</p>
-          </div>
-          <div class="day">
+<section class="days">
+    <div class="day">
+        {{forecast.list[0].dt | formatUnix}}
+            <p>{{(forecast.list[0].main.temp_max - 273.15).toFixed(0) + '°C'}}
+              / {{(forecast.list[0].main.temp_min - 273.15).toFixed(0) + '°C'}}
+            </p>
+            <p>Wind speed: {{forecast.list[0].wind.speed + 'm/s'}}</p>
+            <p>Humidity: {{forecast.list[0].main.humidity + '%'}}</p>
+        </div>
+        <div class="day">
+            {{forecast.list[3].dt | formatUnix}}
+            <p>{{(forecast.list[3].main.temp_max - 273.15).toFixed(0) + '°C'}}
+                / {{(forecast.list[3].main.temp_min - 273.15).toFixed(0) + '°C'}}
+            </p>
+            <p>Wind speed: {{forecast.list[3].wind.speed + 'm/s'}}</p>
+            <p>Humidity: {{forecast.list[3].main.humidity + '%'}}</p>
+        </div>
+        <div class="day">
               {{forecast.list[11].dt | formatUnix}}
               <p>{{(forecast.list[11].main.temp_max - 273.15).toFixed(0) + '°C'}}
                   / {{(forecast.list[11].main.temp_min - 273.15).toFixed(0) + '°C'}}
@@ -43,7 +41,6 @@
               <p>Humidity: {{forecast.list[28].main.humidity + '%'}}</p>
           </div>
       </section>
-  </div>
 </template>
 
 <script>
@@ -82,13 +79,19 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 .days {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 .day {
+    padding: 20px;
     flex-basis: 20%;
+}
+@media screen and (max-width: 500px) {
+    .days {
+        display: block;
+    }
 }
 </style>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Weather from '@/components/Weather'
 import SingleWeather from '@/components/SingleWeather'
 import Forecast from '@/components/Forecast'
+import About from '@/components/About'
 
 Vue.use(Router)
 
@@ -21,10 +22,10 @@ export default new Router({
       props: true
     },
     {
-      path:'/:id',
-      name: 'forecast',
-      component: Forecast,
-      props: true
+      path: '/app/about',
+      name: 'About',
+      component: About,
+      props: false
     }
   ]
 })
