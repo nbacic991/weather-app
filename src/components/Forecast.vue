@@ -79,19 +79,26 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .days {
+    padding-left: 20px;
+    overflow: hidden;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-}
-.day {
-    padding: 20px;
-    flex-basis: 20%;
-}
-@media screen and (max-width: 500px) {
-    .days {
-        display: block;
+    .day {
+        flex-basis: 20%;
+        padding: 10px 0;
+        text-align: center;
+        p {
+            margin: 2px 0;
+        }
+        @media (max-width: 768px) {
+            flex-basis: 50%;
+        }
+        @media (max-width: 480px) {
+            flex-basis: 100%;
+        }
     }
 }
 </style>

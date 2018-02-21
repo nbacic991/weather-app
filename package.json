@@ -6,10 +6,11 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "node server.js",
+    "start": "npm run dev",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bulma": "^0.6.2",
     "express": "^4.16.2",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",

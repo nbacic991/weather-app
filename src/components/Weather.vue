@@ -1,25 +1,28 @@
 <template>
   <main>
-    <h1>Weather APP</h1>
+    <h1 class="title is-1">Weather APP</h1>
     <Navigation />
-    <h3>Enter city</h3>
+    <p class="subtitle is-4">Enter city</p>
     <div class="weather">
       <form action="">
-        <input type="text" v-model="city" placeholder="Search for Your city...">
-        <button @click="searchCity" :disabled="city.length > 0 ? false : true">Search</button>
+        <div class="field">
+          <div class="control">
+            <input type="text" v-model="city" class="input is-rounded" placeholder="Search for Your city...">
+          </div>
+        </div>
+        <button class="button is-primary is-rounded"  @click="searchCity" :disabled="city.length > 0 ? false : true">Search</button>
       </form>
-      <div class="places">
-        <div v-for="(save, key) in saved" :key="key"  v-bind:class="save.name.toLowerCase() + ' single-place'">
-          <img v-bind:src="'http://openweathermap.org/img/w/' + save.weather[0].icon + '.png'" alt=""><br>
+      <div class="places fix">
+        <div v-for="(save, key) in saved" :key="key"  class="single-place">
           <router-link :to="{ name: 'single', params: { id: save.name } }" :key="save.id">
-            <p>{{save.name}}</p>
+            <p class="title is-2">{{save.name}}</p>
           </router-link>
-          <span class="temp">{{(save.main.temp - 273.15).toFixed(0) + '°C'}}</span>
-          <p>Description: {{save.weather[0].description}}</p>
+          <img v-bind:src="'http://openweathermap.org/img/w/' + save.weather[0].icon + '.png'" v-bind:alt="save.weather[0].icon">
+          <p class="title is-1">{{(save.main.temp - 273.15).toFixed(0) + '°C'}}</p>
           <!-- <button @click="remove(save)">x</button> -->
         </div>
       </div>
-      <button @click="clearLocalStorage">Clear saved data</button>
+      <button class="button is-primary is-rounded" @click="clearLocalStorage">Clear saved data</button>
     </div>
   </main>
 </template>
@@ -78,51 +81,9 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-main {
-  margin: 0 0 10px 0;
-  h1 {
-    margin-top: 0;
-    color: #ffffff;
-  }
-  h3 {
-    color: #ffffff;
-  }
-}
-a {
-  text-decoration: none;
-  font-size: 24px;
-  font-style: italic;
-}
-.temp {
-  font-size: 30px;
-}
-img {
-  width: 100px;
-}
-.places {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  position: relative;
-}
-.single-place {
-  border: 1px solid gray;
-  border-radius: 10px;
-  flex-basis: 24%;
-  margin: 10px auto;
-  box-shadow: 2px 2px 2px gray;
-  padding: 15px;
-  position: relative;
-  background: #90d7c9;
-}
-.single-place button {
-  float: right;
-}
-@media screen and (max-width: 500px) {
-  .places {
-    display: block;
-    padding: 10px;
-  }
-}
+<style lang="scss" src="bulma" scoped>
+/**
+ *  Default settings
+ */
+
 </style>

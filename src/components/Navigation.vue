@@ -1,17 +1,17 @@
 <template>
     <div v-bind:class="{active: showMobileMenu}" class="main-content">
         <div class="navigation">
-        <router-link to="/">Home</router-link>
-        <router-link to="/app/about">About</router-link>
-    </div>
-    <div @click="showMobileMenu = !showMobileMenu" class="mobile-menu"
-        v-bind:class="{active: showMobileMenu}">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <router-link to="/">Home</router-link>
+          <router-link to="/app/about">About</router-link>
         </div>
-  </div>
+      <div @click="showMobileMenu = !showMobileMenu" class="mobile-menu"
+          v-bind:class="{active: showMobileMenu}">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -25,13 +25,17 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .main-content {
-    &.active {
-        .navigation {
-            left: 0;
-        }
+  &.active {
+    .navigation {
+      left: 0;
     }
+  }
+}
+.control {
+  width: 400px;
+  margin: auto;
 }
 .mobile-menu {
   width: 40px;
@@ -104,25 +108,53 @@ export default {
   }
  }
 .navigation {
-    z-index: 1;
-    padding-top: 30px;
-    transition: 300ms;
-    position: fixed;
-    width: 320px;
-    left: -320px;
-    top: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  padding-top: 30px;
+  transition: 300ms;
+  position: fixed;
+  width: 320px;
+  left: -320px;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  a {
+    display: block;
+    padding: 10px 5px;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #355CA9;
     color: #ffffff;
-    a {
-        display: block;
-        padding: 10px 5px;
-        text-decoration: none;
-        margin: 5px;
-        border-radius: 5px;
-        background-color: #355CA9;
-        color: #ffffff;
-        outline: 0;
+    outline: 0;
   }
+}
+form {
+  max-width: 500px;
+  margin: auto;
+}
+.places {
+  padding: 50px 0;
+  margin: auto;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .single-place {
+    flex-basis: 33%;
+    padding: 50px 0;
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    @media (max-width: 768px) {
+      flex-basis: 50%;
+    }
+    @media (max-width: 480px) {
+      flex-basis: 100%;
+    }
+  }
+}
+* {
+  box-sizing: border-box;
 }
 </style>

@@ -1,13 +1,17 @@
 <template>
 <div class="main-content-single">
   <Navigation />
-  <div v-if="weather" class="content" v-bind:class="id.toLowerCase()">
+  <div v-if="weather" class="content" >
       <div class="container">
-        <h1>{{id}}, {{weather.sys.country}}</h1>
-        <p>Max Tem:  <icon color="red" name="caret-up"></icon> {{(weather.main.temp_max - 273.15).toFixed(0) + '°C'}}</p>
-        <p>Max Tem: <icon color="lightblue" name="caret-down"></icon> {{(weather.main.temp_min - 273.15).toFixed(0) + '°C'}}</p>
-        <p>Pressure: {{weather.main.pressure + ' mb/s'}}</p>
-        <Forecast :id=city></Forecast>      
+        <div class="single-place-details">
+          <div v-bind:class="id.toLowerCase() + ' image'"></div>
+          <p class="title is-1">{{id}}, {{weather.sys.country}}</p>
+          <p>Max Tem: {{(weather.main.temp_max - 273.15).toFixed(0) + '°C'}}</p>
+          <p>Max Tem: {{(weather.main.temp_min - 273.15).toFixed(0) + '°C'}}</p>
+          <p>Pressure: {{weather.main.pressure + ' mb/s'}}</p>
+        </div>
+        <p class="title">Next 5 days</p>
+        <Forecast :id=city />      
       </div>
   </div>
 </div>
@@ -17,7 +21,6 @@
 <script>
 import axios from 'axios'
 import Forecast from './Forecast'
-import Icon from 'vue-awesome/components/Icon'
 import Navigation from './Navigation'
 
 const apiKey = '9750ed0121530eff6f42450c769c6222';
@@ -44,7 +47,6 @@ export default {
   },
   components: {
     Forecast,
-    Icon,
     Navigation
   },
 }
@@ -54,8 +56,32 @@ export default {
 
 .container {
   color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 200px 0;
+  overflow: hidden;
+  max-width: 1180px;
+  width: 100%;
+  margin: auto;
+  padding: 100px 15px;
+  .title {
+    margin: 0;
+    font-size: 38px;
+  }
+}
+.image {
+  padding: 150px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.single-place-details {
+  max-width: 300px;
+  width: 100%;
+  float: left;
+  color: #2c2c2a;
+  background-color: #d8d8d7;
+  padding: 0 0 10px 0;
+  border-radius: 15%;
+  @media (max-width: 480px) {
+    float: none;
+    margin: auto;
+  }
 }
 /**
  * Cities
@@ -65,7 +91,7 @@ export default {
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.content.novi.sad {
+.novi.sad {
   background: url('../assets/novi-sad.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
