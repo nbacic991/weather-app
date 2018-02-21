@@ -58,10 +58,6 @@ export default {
   padding: 200px 0;
 }
 /**
- * Mobile menu
- */
-
-/**
  * Cities
  **/
 .subotica {
@@ -69,7 +65,7 @@ export default {
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.novi.sad {
+.content.novi.sad {
   background: url('../assets/novi-sad.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
