@@ -81,7 +81,7 @@ export default {
 </script>
 
 
-<style lang="scss" src="bulma" scoped>
+<style lang="scss" scoped>
 /**
  *  Default settings
  */

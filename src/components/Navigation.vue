@@ -34,8 +34,9 @@ export default {
   }
 }
 .control {
-  width: 400px;
+  max-width: 400px;
   margin: auto;
+  width: 100%;
 }
 .mobile-menu {
   width: 40px;
@@ -130,14 +131,15 @@ export default {
   }
 }
 form {
-  max-width: 500px;
-  width: 100%;
   margin: auto;
-  @media (max-width: 400px) {
-    max-width: 250px;
-  }
   input {
-    font-size: 16px;
+    width: 100% !important;
+    font-size: 16px !important;
+  @media (max-width: 400px) {
+      max-width: 200px;
+      width: 100%;
+      margin: auto;
+    }
   }
 }
 .places {
