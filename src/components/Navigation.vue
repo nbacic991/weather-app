@@ -132,7 +132,7 @@ export default {
 form {
   max-width: 500px;
   width: 100%;
-  margin: auto 25px;
+  margin: auto;
   @media (max-width: 400px) {
     max-width: 250px;
   }
