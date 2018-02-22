@@ -130,8 +130,14 @@ export default {
   }
 }
 form {
-  max-width: 400px;
+  max-width: 500px;
   margin: auto;
+  @media (max-width: 400px) {
+    max-width: 250px;
+  }
+  input {
+    font-size: 16px;
+  }
 }
 .places {
   padding: 50px 0;
