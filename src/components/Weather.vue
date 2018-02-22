@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     searchCity(){
-      axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${apiKey}`)
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${apiKey}`)
         .then(response => response.json())
         .then((data) => {
           this.weather = data;
