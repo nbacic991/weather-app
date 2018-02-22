@@ -130,7 +130,7 @@ export default {
   }
 }
 form {
-  max-width: 500px;
+  max-width: 400px;
   margin: auto;
 }
 .places {
