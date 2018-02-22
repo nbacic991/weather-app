@@ -59,7 +59,7 @@ export default {
         }
     },
     mounted(){
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${this.id}&APPID=${apiKey}`)
+      axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${this.id}&APPID=${apiKey}`)
         .then(response => response.json())
         .then((data) => {
           this.forecast = data;
