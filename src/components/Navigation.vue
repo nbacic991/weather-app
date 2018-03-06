@@ -26,6 +26,26 @@ export default {
 </script>
 
 <style lang="scss">
+.progress {
+  height: 30px !important;
+}
+.progress-bar {
+  &.html {
+    background-color: #E63D0C;
+  }
+  &.css {
+    background-color:#4A9ADE ;
+  }
+  &.js {
+    background-color: #E9CF00;
+  }
+  &.vue {
+    background-color: #00C781;
+  }
+  &.php {
+    background-color: #6D6CBC;
+  }
+}
 .about {
   display: flex;
   justify-content: space-around;
@@ -39,9 +59,19 @@ export default {
     @media screen and (max-width: 768px) {
       flex-basis: 100%;
     }
-    img {
+    .author-img {
+      border-radius: 50%;
+      overflow: hidden;
       max-width: 300px;
-      width: 100%;
+      height: 300px;
+      widows: 100%;
+      position: relative;
+      margin: 20px auto;
+      img {
+        position: absolute;
+        transform: translate(-50%, -10%);
+      }
+
     }
     .social {
       a::before {
