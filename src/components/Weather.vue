@@ -39,7 +39,7 @@ export default {
       weather: [],
       city: '',
       isHidden: true,
-      saved: []
+      saved: [],
     }
   },
   mounted(){
@@ -81,7 +81,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss" src="bulma" scoped>
 /**
  *  Default settings
  */

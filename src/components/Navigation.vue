@@ -2,7 +2,7 @@
     <div v-bind:class="{active: showMobileMenu}" class="main-content">
         <div class="navigation">
           <router-link to="/">Home</router-link>
-          <router-link to="/app/about">About</router-link>
+          <router-link to="/app/about">About Author</router-link>
         </div>
       <div @click="showMobileMenu = !showMobileMenu" class="mobile-menu"
           v-bind:class="{active: showMobileMenu}">
@@ -26,6 +26,57 @@ export default {
 </script>
 
 <style lang="scss">
+.about {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 15px;
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+  .content {
+    padding: 10px;
+    flex-basis: 45%;
+    @media screen and (max-width: 768px) {
+      flex-basis: 100%;
+    }
+    img {
+      max-width: 300px;
+      width: 100%;
+    }
+    .social {
+      a::before {
+        font-family: 'FontAwesome';
+          font-size: 50px;
+          color: black;
+      }
+      a:hover {
+        &::before {
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
+      .git {
+        &::before {
+          content: '\f09b';
+        }
+      }
+      .face {
+        &::before {
+          content: '\f082';
+        }
+      }
+      .lin {
+        &::before {
+          content: '\f08c';
+        }
+      }
+      .insta {
+        &::before {
+          content: '\f16d'
+        }
+      }
+    }
+  }
+}
 .main-content {
   &.active {
     .navigation {
@@ -125,8 +176,8 @@ export default {
     text-decoration: none;
     margin: 5px;
     border-radius: 5px;
-    background-color: #355CA9;
-    color: #ffffff;
+    background-color: rgb(153, 225, 247);
+    color: rgb(49, 50, 51);
     outline: 0;
   }
 }
