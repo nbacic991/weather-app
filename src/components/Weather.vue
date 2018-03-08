@@ -17,7 +17,7 @@
           <router-link :to="{ name: 'single', params: { id: save.name } }" :key="save.id">
             <p class="title is-2">{{save.name}}</p>
           </router-link>
-          <img v-bind:src="'http://openweathermap.org/img/w/' + save.weather[0].icon + '.png'" v-bind:alt="save.weather[0].icon">
+          <img v-bind:src="'//openweathermap.org/img/w/' + save.weather[0].icon + '.png'" v-bind:alt="save.weather[0].icon">
           <p class="title is-1">{{(save.main.temp - 273.15).toFixed(0) + '°C'}}</p>
           <!-- <button @click="remove(save)">x</button> -->
         </div>
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     searchCity(){
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${apiKey}`)
+      fetch(`//api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${apiKey}`)
         .then(response => response.json())
         .then((data) => {
           this.weather = data;
