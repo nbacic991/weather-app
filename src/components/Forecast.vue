@@ -59,7 +59,7 @@ export default {
         }
     },
     mounted(){
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${this.id}&APPID=${apiKey}`)
+      fetch(`//api.openweathermap.org/data/2.5/forecast?q=${this.id}&APPID=${apiKey}`)
         .then(response => response.json())
         .then((data) => {
           this.forecast = data;
