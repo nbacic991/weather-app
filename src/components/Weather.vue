@@ -10,7 +10,7 @@
             <input type="text" v-model="city" class="input is-rounded" placeholder="Search for Your city...">
           </div>
         </div>
-        <button class="button is-primary is-rounded"  @click="searchCity" :disabled="city.length > 0 ? false : true">Search</button>
+        <button class="button is-primary is-rounded"  @click.prevent="searchCity" :disabled="city.length > 0 ? false : true">Search</button>
       </form>
       <div class="places fix">
         <div v-for="(save, key) in saved" :key="key"  class="single-place">
