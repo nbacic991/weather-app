@@ -5,9 +5,9 @@
       <div class="container">
         <div class="single-place-details">
           <div v-bind:class="id.toLowerCase() + ' image'"></div>
-          <p class="title is-1">{{id}}, {{weather.sys.country}}</p>
+          <p class="title is-1">{{id}}</p>
           <p>Max Tem: {{(weather.main.temp_max - 273.15).toFixed(0) + '°C'}}</p>
-          <p>Max Tem: {{(weather.main.temp_min - 273.15).toFixed(0) + '°C'}}</p>
+          <p>Min Tem: {{(weather.main.temp_min - 273.15).toFixed(0) + '°C'}}</p>
           <p>Pressure: {{weather.main.pressure + ' mb/s'}}</p>
         </div>
         <p class="title">Next 5 days</p>
