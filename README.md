@@ -1,6 +1,11 @@
-# weather-app
+# Live Weather App
 
-> A Vue.js project that is showing weather in searched cities
+This project is using [openweather API](http://openweathermap.org/api)
+
+## Live demo
+
+*https://live-weather-app.herokuapp.com*
+[Live Weather App](https://live-weather-app.herokuapp.com "Live Weather Application")
 
 ## Build Setup
 
@@ -18,6 +23,5 @@
     npm run build --report
     
 ```
-## Live demo
 
-*https://live-weather-app.herokuapp.com*
+
