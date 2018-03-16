@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     searchCity(){
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${apiKey}`)
+      fetch(`//api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=${apiKey}`)
         .then(response => response.json())
         .then((data) => {
           this.weather = data;
