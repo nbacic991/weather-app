@@ -16,6 +16,8 @@
 
 # build for production and view the bundle analyzer report
     npm run build --report
-
+    
+```
 ## Live demo
+
 *https://live-weather-app.herokuapp.com*
