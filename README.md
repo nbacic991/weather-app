@@ -4,7 +4,6 @@ This project is using [openweather API](http://openweathermap.org/api)
 
 ## Live demo
 
-*https://live-weather-app.herokuapp.com*
 [Live Weather App](https://live-weather-app.herokuapp.com "Live Weather Application")
 
 ## Build Setup
